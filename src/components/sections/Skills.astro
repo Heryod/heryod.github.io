@@ -1,0 +1,92 @@
+---
+const skills = [
+  { name: "Python", level: 4 },
+  { name: "Lua", level: 4 },
+  { name: "TypeScript", level: 3 },
+  { name: "Linux", level: 3 },
+  { name: "Automation", level: 3 },
+  { name: "AI/ML", level: 1 },
+];
+---
+
+<section class="skills" aria-labelledby="skills-title">
+  <h2 id="skills-title" class="skills__title">
+    <span data-pl>Skills</span>
+    <span data-en>Skills</span>
+  </h2>
+
+  <div class="skills__list">
+    {
+      skills.map((skill) => (
+        <div class="skills__item">
+          <span class="skills__name">{skill.name}</span>
+          <span class="skills__rating" aria-label={`${skill.level} out of 5`}>
+            {Array.from({ length: 5 }).map((_, index) => (
+              <span
+                class:list={[
+                  "skills__dot",
+                  index < skill.level && "skills__dot--active",
+                ]}
+                aria-hidden="true"
+              />
+            ))}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .skills {
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg-card) 42%, transparent);
+    padding: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .skills__title {
+    color: var(--accent);
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-weight: 600;
+    margin-bottom: 1.3rem;
+  }
+
+  .skills__list {
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .skills__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  .skills__name {
+    min-width: 0;
+    color: var(--text);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+
+  .skills__rating {
+    display: inline-flex;
+    gap: 0.3rem;
+  }
+
+  .skills__dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .skills__dot--active {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+</style>

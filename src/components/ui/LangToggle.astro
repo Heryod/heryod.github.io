@@ -1,0 +1,90 @@
+<button
+  class="lang-toggle"
+  id="lang-toggle"
+  aria-label="Switch language"
+  type="button"
+>
+  <span class="lang-toggle__option" data-option="en">EN</span>
+  <span class="lang-toggle__option" data-option="pl">PL</span>
+  <span class="lang-toggle__thumb" aria-hidden="true"></span>
+</button>
+
+<script>
+  const btn = document.getElementById("lang-toggle");
+  const html = document.documentElement;
+
+  const setLang = (lang: "pl" | "en") => {
+    html.setAttribute("data-lang", lang);
+    html.setAttribute("lang", lang);
+    btn?.setAttribute("data-current", lang);
+    localStorage.setItem("lang", lang);
+  };
+
+  const initialLang =
+    localStorage.getItem("lang") || html.getAttribute("data-lang") || "en";
+  setLang(initialLang === "pl" ? "pl" : "en");
+
+  btn?.addEventListener("click", () => {
+    const current = html.getAttribute("data-lang") || "en";
+    const next = current === "pl" ? "en" : "pl";
+
+    setLang(next);
+  });
+</script>
+
+<style>
+  .lang-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    min-width: 86px;
+    height: 34px;
+    padding: 3px;
+    background: color-mix(in srgb, var(--bg-card) 88%, white 12%);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    isolation: isolate;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--accent);
+  }
+
+  .lang-toggle__option {
+    position: relative;
+    z-index: 2;
+    width: 40px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    user-select: none;
+  }
+
+  .lang-toggle__thumb {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 40px;
+    height: 26px;
+    border-radius: 6px;
+    background: var(--accent);
+    transition: transform 0.2s ease;
+    z-index: 1;
+  }
+
+  .lang-toggle[data-current="en"] [data-option="en"],
+  .lang-toggle[data-current="pl"] [data-option="pl"] {
+    color: var(--bg);
+  }
+
+  .lang-toggle[data-current="pl"] .lang-toggle__thumb {
+    transform: translateX(40px);
+  }
+</style>

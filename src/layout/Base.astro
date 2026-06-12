@@ -1,0 +1,63 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Header from "@/layout/Header.astro";
+import "@/styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "Daniel Pardej — AI/ML Developer",
+  description = "Portfolio junior AI/ML developer z Łodzi",
+} = Astro.props;
+---
+
+<html lang="en" data-lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <ClientRouter />
+    <script is:inline>
+      const saved = localStorage.getItem("lang") || "en";
+      const lang = saved === "pl" ? "pl" : "en";
+      document.documentElement.setAttribute("data-lang", lang);
+      document.documentElement.setAttribute("lang", lang);
+    </script>
+  </head>
+  <body>
+    <Header />
+    <slot />
+
+    <script is:inline>
+      const applySavedLang = () => {
+        const saved = localStorage.getItem("lang") || "en";
+        const lang = saved === "pl" ? "pl" : "en";
+        document.documentElement.setAttribute("data-lang", lang);
+        document.documentElement.setAttribute("lang", lang);
+      };
+
+      const applySavedLangTo = (target) => {
+        const saved = localStorage.getItem("lang") || "en";
+        const lang = saved === "pl" ? "pl" : "en";
+        target.documentElement.setAttribute("data-lang", lang);
+        target.documentElement.setAttribute("lang", lang);
+      };
+
+      applySavedLang();
+      document.addEventListener("astro:before-swap", (event) => {
+        applySavedLang();
+        applySavedLangTo(event.newDocument);
+      });
+      document.addEventListener("astro:page-load", applySavedLang);
+    </script>
+  </body>
+</html>

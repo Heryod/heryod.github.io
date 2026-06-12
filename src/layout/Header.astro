@@ -1,0 +1,25 @@
+---
+import LangToggle from "@/components/ui/LangToggle.astro";
+---
+
+<header class="header" transition:persist>
+  <LangToggle />
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem clamp(1rem, 3vw, 3.5rem);
+    background: color-mix(in srgb, var(--bg) 80%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    view-transition-name: site-header;
+  }
+</style>

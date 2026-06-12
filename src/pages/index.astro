@@ -1,0 +1,59 @@
+---
+import Base from "@/layout/Base.astro";
+import AboutMe from "@/components/sections/AboutMe.astro";
+import Projects from "@/components/sections/Projects.astro";
+import Skills from "@/components/sections/Skills.astro";
+import { pageTransition } from "@/lib/pageTransition";
+---
+
+<Base>
+  <main
+    class="home"
+    transition:name="page-shell"
+    transition:animate={pageTransition}
+  >
+    <div class="home__grid">
+      <div class="home__side">
+        <AboutMe />
+        <Skills />
+      </div>
+
+      <Projects />
+    </div>
+  </main>
+</Base>
+
+<style>
+  .home {
+    min-height: 100vh;
+    padding: clamp(5.5rem, 10vh, 7rem) clamp(1rem, 3vw, 3.5rem)
+      clamp(2rem, 6vh, 4rem);
+  }
+
+  .home__grid {
+    width: min(100%, 1720px);
+    min-height: min(720px, calc(100vh - 10rem));
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(320px, 0.75fr) minmax(0, 2fr);
+    gap: 1rem;
+  }
+
+  .home__side {
+    min-width: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    gap: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .home {
+      padding-top: 5.5rem;
+    }
+
+    .home__grid {
+      min-height: auto;
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

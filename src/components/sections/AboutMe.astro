@@ -1,0 +1,180 @@
+---
+const tags = ["Python", "Lua", "TypeScript", "Linux", "Automation"];
+---
+
+<section id="about" class="about">
+  <div class="about__inner">
+    <div class="about__text">
+      <p class="about__greeting">
+        <span data-pl>Cześć, jestem</span>
+        <span data-en>Hi, I'm</span>
+      </p>
+      <h1 class="about__name">Daniel Pardej</h1>
+      <h2 class="about__role">Heryod</h2>
+
+      <p class="about__bio" data-pl>
+        Pasjonat nowych technologii z Łodzi. Doświadczenie buduję poprzez
+        autorskie projekty - od zarządzania i technicznego utrzymania serwera
+        FiveM, po własny system automatyzacji domowej oparty na Home
+        Assistancie. Obecnie intensywnie rozwijam się w obszarze AI/ML oraz
+        rozpoczynam zaoczne studia na kierunku Informatyka, szukając pierwszych
+        wyzwań zawodowych.
+      </p>
+      <p class="about__bio" data-en>
+        Tech enthusiast from Łódź. I build my experience through hands-on
+        personal projects, ranging from managing and maintaining a FiveM server
+        to designing a custom Home Assistant automation ecosystem. Currently, I
+        am expanding my skills in AI/ML and pursuing a part-time Bachelor's
+        degree in Computer Science, ready to transition into my first
+        professional role.
+      </p>
+
+      <div class="about__tags">
+        {tags.map((s) => <span class="tag">{s}</span>)}
+      </div>
+
+      <div class="about__cta">
+        <a
+          href="https://github.com/heryod"
+          class="btn btn--primary"
+          target="_blank"
+        >
+          GitHub
+        </a>
+        <a href="mailto:kontakt@heryod.works" class="btn btn--ghost">
+          <span data-pl>Kontakt</span>
+          <span data-en>Contact</span>
+        </a>
+      </div>
+    </div>
+
+    <!--
+    <div class="about__avatar">
+      <img src="/images/heryod.webp" alt="heryod" width="350" height="350" />
+    </div> -->
+  </div>
+</section>
+
+<style>
+  .about {
+    height: 100%;
+    min-height: 0;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--bg-card) 42%, transparent);
+    display: flex;
+  }
+
+  .about__inner {
+    min-width: 0;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .about__text {
+    flex: 1;
+  }
+
+  .about__greeting {
+    color: var(--accent);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  .about__name {
+    font-size: clamp(2rem, 4vw, 3.35rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #fff;
+  }
+
+  .about__role {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    margin: 0.5rem 0 1.5rem;
+  }
+
+  .about__bio {
+    color: var(--text);
+    line-height: 1.7;
+    max-width: 46rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .tag {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+  }
+
+  .about__cta {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    padding: 0.65rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn--primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .btn--primary:hover {
+    opacity: 0.85;
+  }
+
+  .btn--ghost {
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn--ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .about__avatar img {
+    width: clamp(250px, 25vw, 350px);
+    height: clamp(250px, 25vw, 350px);
+    border-radius: 15%;
+    object-fit: cover;
+    object-position: center 20%;
+    border: 2px solid var(--border);
+    filter: grayscale(20%);
+  }
+
+  @media (max-width: 768px) {
+    .about__inner {
+      text-align: left;
+    }
+
+    .about__tags,
+    .about__cta {
+      justify-content: flex-start;
+    }
+
+    .about__bio {
+      margin: 0 0 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,34 @@
+{
+    "name": "heryod.github.io",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "format": "prettier . --write",
+        "format:check": "prettier . --check"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devEngines": {
+        "packageManager": {
+            "name": "pnpm",
+            "version": "^11.3.0",
+            "onFail": "download"
+        }
+    },
+    "type": "module",
+    "dependencies": {
+        "@astrojs/mdx": "^6.0.3",
+        "@tailwindcss/vite": "^4.3.0",
+        "astro": "^6.4.6",
+        "tailwindcss": "^4.3.0"
+    },
+    "devDependencies": {
+        "prettier": "^3.8.4",
+        "prettier-plugin-astro": "^0.14.1"
+    }
+}

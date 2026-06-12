@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0d1117;
+  --bg-card: #161b22;
+  --border: #1f2937;
+  --text: #cdd6f4;
+  --text-muted: #6b7280;
+  --accent: #39bae6; /* Ayu blue */
+  --accent-2: #e6b450; /* Ayu gold - for highlights */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes page-leave {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(-1.25rem);
+  }
+}
+
+@keyframes page-enter-back {
+  from {
+    opacity: 0;
+    transform: translateX(-1.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes page-leave-back {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: none;
+}
+
+::view-transition-old(page-shell),
+::view-transition-new(page-shell),
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(page-shell) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(page-shell) {
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(site-header),
+::view-transition-new(site-header) {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root),
+  ::view-transition-old(page-shell),
+  ::view-transition-new(page-shell),
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) {
+    animation: none;
+  }
+}
+
+[data-lang="en"] [data-pl] {
+  display: none;
+}
+
+[data-lang="pl"] [data-en] {
+  display: none;
+}

@@ -3,7 +3,7 @@ import mdx from "@astrojs/mdx";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://heryod.github.io",
+  site: "https://heryod.works",
   output: "static",
   integrations: [mdx()],
   vite: {

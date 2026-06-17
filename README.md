@@ -1,4 +1,4 @@
-# Personal Portfolio — Heryod
+# Personal Portfolio - Heryod
 
 This repository contains a personal portfolio website built with Astro. It showcases projects, skills and contact information using MDX content and Astro components.
 

@@ -25,8 +25,9 @@ const projects = defineCollection({
     summary: localizedText,
     description: localizedText,
     technologies: z.array(z.string()).default([]),
+    mainSkill: z.string().optional(),
     duration: localizedText,
-    role: localizedText,
+    role: localizedText.optional(),
     responsibilities: localizedList,
     skills: z
       .array(

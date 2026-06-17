@@ -57,6 +57,9 @@
         "type": "string"
       }
     },
+    "mainSkill": {
+      "type": "string"
+    },
     "duration": {
       "type": "object",
       "properties": {
@@ -139,7 +142,6 @@
     "summary",
     "description",
     "duration",
-    "role",
     "responsibilities"
   ]
 }
